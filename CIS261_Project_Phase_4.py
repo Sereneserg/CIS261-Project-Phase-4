@@ -2,11 +2,15 @@
 #
 #
 from datetime import datetime
+#import locale
+
+# TEST WITH AND WITHOUT FILENAME = "Employees.txt"
 ################################################################################
 def CreateUsers():
     print('##### Create users, passwords, and roles #####')
     ########## Open the file user.txt in append mode and assign to UserFile
-    UserFile = open("user.txt", "a") 
+    #with open("user.txt", "a") as UserFile:
+    UserFile = open("user.txt", "a+") 
     while True:
         ########## Write the line of code that will call function GetUserName and assign the return value to username
         username = GetUserName()
@@ -21,7 +25,7 @@ def CreateUsers():
     # close file to save data
     ########## Write the line of code that will close the file UserFile
     UserFile.close()   
-    
+
 
 def GetUserName():
     ##### write the code to enter the username or End and return username 
@@ -37,13 +41,13 @@ def GetUserRole():
      userrole = input("Enter role (Admin or User): ")
      while True:
          ####### write the if statement that validates that Admin or User has been entered. If true, return userrole.  If false, re-input userrole
-         if (userrole.upper() == "ADMIN" or userrole.upper() == "USER"):
+         if userrole.upper() == "ADMIN" or userrole.upper() == "USER":
             return userrole
          else:
-            userrole = inut("Enter role (Admin or User): ")   
+            userrole = input("Enter role (Admin or User): ")   
 
 def printuserinfo():
-    UserFile = open("Users.txt","r")
+    UserFile = open("user.txt","r")
     while True:
         UserDetail = UserFile.readline()
         if not UserDetail:
@@ -63,10 +67,10 @@ def Login():
     UserFile = open("user.txt", "r")
     
     UserName = input("Enter User Name: ")
-    UserRole = "None"
+    UserRole = "NONE"
     while True:
        ########## Write the line of code that will read a line from UserFile and assign it to UserDetail
-       UserDetail = UserFile.readline().rstrip("\n")      
+       UserDetail = UserFile.readline() #.rstrip("\n")      
        if not UserDetail:
            return UserRole, UserName
        ########## Write the line of code that will replace the carriage return in UserDetail
@@ -166,6 +170,7 @@ if __name__ == "__main__":
     ##################################################
     ########## Write the line of code to call the method CreateUsers
     CreateUsers()
+    printuserinfo()
 
     print()
     print("##### Data Entry #####")
@@ -194,6 +199,6 @@ if __name__ == "__main__":
                 EmpDetail = fromdate + "|" + todate  + "|" + empname  + "|" + str(hours)  + "|" + str(hourlyrate)  + "|" + str(taxrate) + "\n"  
                 EmpFile.write(EmpDetail)
         # close file to save data
-            EmpFile.close()    
+            EmpFile.close()  
         printinfo(DetailsPrinted)
 
