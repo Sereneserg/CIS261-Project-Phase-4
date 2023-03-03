@@ -2,15 +2,14 @@
 #
 #
 from datetime import datetime
-#import locale
 
-# TEST WITH AND WITHOUT FILENAME = "Employees.txt"
+
 ################################################################################
 def CreateUsers():
     print('##### Create users, passwords, and roles #####')
     ########## Open the file user.txt in append mode and assign to UserFile
     #with open("user.txt", "a") as UserFile:
-    UserFile = open("user.txt", "a+") 
+    UserFile = open("user.txt", "a") 
     while True:
         ########## Write the line of code that will call function GetUserName and assign the return value to username
         username = GetUserName()
@@ -201,4 +200,5 @@ if __name__ == "__main__":
         # close file to save data
             EmpFile.close()  
         printinfo(DetailsPrinted)
+
 
