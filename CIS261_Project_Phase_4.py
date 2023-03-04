@@ -184,7 +184,7 @@ if __name__ == "__main__":
     else:
     # only admin users can enter data
         ##### write the if statement that will check to see if the UserRole is equal to ADMIN (NOTE: code will show red error lines until this line is written)
-        if UserRole == "ADMIN":
+        if UserRole.upper() == "ADMIN":
    
             EmpFile = open("Employees.txt", "a+")                
             while True:
